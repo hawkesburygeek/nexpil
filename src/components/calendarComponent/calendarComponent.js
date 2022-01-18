@@ -85,6 +85,7 @@ export class Calendar extends React.Component {
       modalHide: true,
       timeslot: [],
       myavaliabletimeslot: [],
+      myavaliabletimeslotIds: [],
       heightSpec: "Fixed",
       height: 800,
       arrowDirection: true,
@@ -284,7 +285,8 @@ export class Calendar extends React.Component {
     }).then(function (response) {
       a = response.data.data.results
     });
-    this.setState({ myavaliabletimeslot: a });
+    const myavaliabletimeslotIds = a.map(x => x.time_slot_id);
+    this.setState({ myavaliabletimeslot: a, myavaliabletimeslotIds });
   }
 
   async fetchTimeSlot() {
@@ -420,6 +422,27 @@ export class Calendar extends React.Component {
   }
   closeAvaliableModal =()=>{
     this.setState({showavaliableModal:false});
+    this.saveMyAvailableTime();
+  }
+  saveMyAvailableTime = async() => {
+    const { myavaliabletimeslot, myavaliabletimeslotIds } = this.state;
+    const myavaliabletimeslotUnselected = myavaliabletimeslot.filter(x => !myavaliabletimeslotIds.includes(x.time_slot_id));
+    if(myavaliabletimeslotUnselected.length > 0) {
+      let tzoffset = this.state.myappdate.getTimezoneOffset() * 60000; //offset in milliseconds
+      let localISOTime = (new Date(this.state.myappdate - tzoffset)).toISOString().substring(0, 10);
+      let appointmentDetail = {
+        title: "Avaliable Time",
+        patient_id: -99999,
+        appointment_date: localISOTime,
+        time_slot_id: 0,
+        description: "",
+      }
+      for(let i=0; i< myavaliabletimeslotUnselected.length; i++) {
+        appointmentDetail.time_slot_id = myavaliabletimeslotUnselected[i].time_slot_id;
+        await axios.post(server.serverURL + 'v1/appointments', appointmentDetail, config);
+      }
+      this.fetchMyAvaliableTimeSlot();
+    }
   }
   handleDateSelect = (selectInfo) => {
   
@@ -595,8 +618,18 @@ export class Calendar extends React.Component {
 
       })
   }
+
+  handleSelectMyTime = (item) => {
+    let { myavaliabletimeslotIds } = this.state;
+    const index = myavaliabletimeslotIds.indexOf(item.time_slot_id);
+    if (index > -1)
+      myavaliabletimeslotIds.splice(index, 1);
+    else
+      myavaliabletimeslotIds.push(item.time_slot_id);
+    this.setState({ myavaliabletimeslotIds });
+  }
   render() {
-    console.log("modal state", this.state.timeslot);
+    const { myavaliabletimeslotIds } = this.state;
     return (
       <div className='demo-app'>
         {this.renderSidebar()}
@@ -727,12 +760,13 @@ export class Calendar extends React.Component {
           // centered
           dialogClassName="modal-timeslot"
           style = {{
-            borderRadius: '25px !important'
+            borderRadius: '5px !important'
           }}
         >
           <Modal.Header closeButton onClick={() => this.closeAvaliableModal()} style ={{
             fontWeight: 600,
             fontFamily: 'monospace',
+            fontSize: '25px'
           }}>{'My Availability'}</Modal.Header>
           <Modal.Body>
             {this.state.hasError &&
@@ -741,16 +775,58 @@ export class Calendar extends React.Component {
                 <strong>Danger!</strong> {this.state.hasError}
               </div>
             }
-            <div className="form-group">
-              <DatePicker
-                ref={this.appointmentDate}
-                selected={this.state.myappdate}
-                onChange={this.handleDateChangeformyappdate}
-                name="startDate"
-                dateFormat="MM/dd/yyyy"
-              />
+            <div className="form-availability">
+            <div className="row">
+              <div className="col-12 col-sm-6">
+                <div className="form-group form-group-availability">
+                  <label>Date</label>
+                  <DatePicker
+                    ref={this.appointmentDate}
+                    selected={this.state.myappdate}
+                    onChange={this.handleDateChangeformyappdate}
+                    name="startDate"
+                    className="availability-datepicker"
+                    dateFormat="MMMM, d yyyy"
+                  />
+                </div>
+              </div>
+              <div className="col-12 col-sm-6">
+                <div className="form-group form-group-availability">
+                  <label>Start Time</label>
+                  <input
+                    name="slelectAll"
+                    disabled={true}
+                    className="availability-datepicker"
+                    value="8:00 AM"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="form-group">
+            <div className="row mt-3">
+              <div className="col-12 col-sm-6">
+                <div className="form-group form-group-availability">
+                  <div className="info">Choose your date</div>
+                  <div className="info">Selet the times you are available</div>
+                  <div className="info">Click Save</div>
+                </div>
+                <div className="form-group form-group-availability mt-3">
+                  <label>Deselect All</label>
+                  <input
+                    name="slelectAll"
+                    disabled={true}
+                    className="availability-datepicker"
+                    value="Select All Times"
+                  />
+                </div>
+              </div>
+              <div className="col-12 col-sm-6">
+                {this.state.myavaliabletimeslot.map((item, i) => {
+                    return <div className="form-group-availability timeslot-availablity mb-2" value={item.time_slot_id} key={item.time_slot_id} onClick={()=>this.handleSelectMyTime(item)}><div className={myavaliabletimeslotIds.includes(item.time_slot_id) ? 'selected' : 'unselected'}>{item.time_slot}</div></div>;
+                })}
+              </div>
+            </div>
+            </div>
+            {/* <div className="form-group">
               {this.state.myavaliabletimeslot.map((item, i) => {
                   return <div className="modal-timeslot-item" value={item.time_slot_id} key={item.time_slot_id}>{item.time_slot}<Button style ={{
                     backgroundColor: 'gray',
@@ -759,12 +835,12 @@ export class Calendar extends React.Component {
                     width: 25
                   }} onClick ={(e)=>this.removeMyTime(item)}><span aria-hidden="true">×</span></Button></div>;
               })}
-            </div>
+            </div> */}
           </Modal.Body>
 
           <Modal.Footer style ={{width:"100%"}}>
-              <Button variant="primary" style={{ background: "#877cec", borderColor: "transparent", borderRadius: "20px",width:"100%" }} onClick={this.closeAvaliableModal}>
-                Save
+              <Button variant="primary" style={{ background: "#6600fb", borderColor: "transparent", borderRadius: "25px",width:"100%", padding: "15px" }} onClick={this.closeAvaliableModal}>
+                Save Time Availability
               </Button>
           </Modal.Footer>
 

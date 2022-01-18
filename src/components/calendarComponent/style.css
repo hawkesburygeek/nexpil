@@ -293,7 +293,8 @@ thead tr {
 }
 .modal-timeslot .modal-content{
   width:100% !important;
-  border-radius: 0px !important;
+  border-radius: 20px !important;
+  font-family: monospace;
 }
 .modal-timeslot-item{
   width: 22%;
@@ -636,7 +637,48 @@ button.react-calendar__navigation__arrow.react-calendar__navigation__next-button
 .react-calendar__month-view__days__day--weekend {
    color: #877CEC;
 }
-  
+.form-availability {
+  padding: 0 7.5px;
+}
+.form-group-availability {
+  padding: 8px 12px;
+  background-color: #edf1f8;
+  border-radius: 12px;
+  margin: 0px -7.5px !important;
+}
+.form-group-availability label {
+  color: #8088a6;
+  font-size: 12px;
+  font-weight: bolder;
+  margin-bottom: 0px;
+  padding-left: 2px;
+}
+.form-group-availability .info {
+  color: #161931;
+  width: 100%;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.timeslot-availablity {
+  cursor: pointer;
+  padding: 0px;
+}
+.timeslot-availablity div {
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+.timeslot-availablity .selected {
+  color: white;
+  background-color: #6600fb;
+}
+.availability-datepicker {
+  border: 0;
+  background: no-repeat;
+  cursor: pointer;
+  font-weight: 600;
+  color: #161931;
+  outline: none;
+}
 
 
 
