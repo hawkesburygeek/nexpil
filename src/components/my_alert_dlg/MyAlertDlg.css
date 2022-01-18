@@ -1,0 +1,36 @@
+.my-alert-dialog-style>* .modal-content {
+    /* background-color: red; */
+    border-radius: 20px;
+    max-width: 400px;
+}
+
+.alert-modal-content-container {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+.modal-button-container {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.alert-modal-cancel-button {
+    border-radius: 20px !important;
+    height: 40px;    
+    max-width: 100px;
+    float: right;
+    margin-right: 50px;
+}
+
+.alert-modal-cancel-button:active {
+    border-radius: 20px !important;
+    border-color: transparent !important;
+}
+
+.alert-modal-ok-button {
+    border-radius: 20px !important;
+    height: 40px;
+    max-width: 100px;
+    float: right;
+}

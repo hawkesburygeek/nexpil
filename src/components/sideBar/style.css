@@ -1,0 +1,240 @@
+.side-bar {
+    width: 100%;
+    height: 133px;
+    max-height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 100;
+}
+.icon-size {
+    width: 60px;
+    height: 60px;
+}
+ins {
+    text-underline-offset: 6px;
+    text-decoration: underline 3px;
+}
+.home-link {
+    color: black;
+}
+
+.home-link:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+.home-link:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.side-bar-full-title {
+    padding-left: 50px;
+    margin: 0px;
+    margin-top: 0px;
+    font-size: 50px;
+    font-family: boldTitles;
+}
+
+.side-bar-reduced-title {
+    margin: 0px;
+    margin-top: 40px;
+    font-size: 40px;
+    font-family: boldTitles;
+    display: none;
+}
+
+.navigation-icons-container {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 10px;
+    width: 190px;
+}
+
+.navigation-icon-none-selected {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    color: #333333;
+    font-size: 19px;
+}
+
+.navigation-icons-container a:hover {
+    text-decoration: none;
+}
+.navigation-icon-selected {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 30px;
+    background-color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    color: rgb(119, 51, 207);
+    font-weight: bold;
+    font-size: 19px;
+    padding-left: 15px;
+    text-decoration: underline 3px;
+    text-underline-offset: 6px;
+}
+.avatar-size {
+    margin-left: 10px;
+    width: 60px;
+    height: 60px;
+    margin-right: 5px;
+}
+.avatar-border {
+    padding: 10px 20px;
+    width: 280px;
+    border: 2px solid rgb(190, 190, 190);
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.avatar-content {
+    display: flex;
+}
+.alarm-content {
+    margin-right: 35px;    
+    cursor: pointer;
+}
+.avatar-title {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    align-self: center;
+    line-height: 24px;
+}
+.badge:empty {
+    display:inherit!important;
+}
+.on-off {
+    font-size: 10px;
+}
+.on-off-icon {
+    height: 15px;
+    position: relative;
+    left: 12px;
+    bottom: -40px;
+}
+.image-position{
+    position: relative;
+    left: 25px;
+}
+.sidebar-name {
+    padding-left: 25px;
+    text-decoration: none;
+}
+
+.route-navigate-icon {
+    width: 30px;
+    height: 30px;
+    display: block;
+}
+
+.navigation-icons-name {
+    margin: 0px;
+    font-size: 18px;
+    font-family: regularText;
+    color: #333333;
+    padding-left: 10px;
+}
+
+.navigation-icons-row {
+    /* width: 35%; */
+    text-decoration: none;
+    /* float: right; */
+    /* margin-right: 880px; */
+}
+
+@media only screen and (max-width: 1500px) {
+    .side-bar {
+        width: 7%;
+    }
+
+    .navigation-icons-name {
+        display: none;
+    }
+
+    .navigation-icons-container {
+        width: 100%;
+    }
+
+    .navigation-icons-row {
+        width: auto;
+    }
+
+    .side-bar-full-title {
+        display: none;
+    }
+
+    .side-bar-reduced-title {
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 1335px) {
+    .side-bar {
+        width: 100vw;
+        height: 125px;
+        justify-content: flex-start;
+    }
+    
+    .side-bar-full-title {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    .side-bar-reduced-title {
+        display: none;
+    }
+
+    .navigation-icons-container {
+        display: flex;
+        flex-direction: row;
+        padding-top: 0px;
+        width: 50%;
+        justify-content: space-evenly;
+    }
+
+    .navigation-icon-selected {
+        margin: 0px;
+    }
+
+    .navigation-icon-none-selected {
+        margin: 0px;
+    }
+
+    .side-bar-title {
+        margin-top: 0px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .route-navigate-icon {
+        width: 25px;
+        height: 25px;
+    }
+    .navigation-icons-container {
+        width: 80%;
+    }
+}

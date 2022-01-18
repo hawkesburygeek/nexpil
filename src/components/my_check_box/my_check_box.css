@@ -1,0 +1,44 @@
+
+
+
+.checkbox input[type="checkbox"] {
+    display: none;
+}
+.checkbox input[type="checkbox"]:checked + .wrapper {
+    background-color: #6900e0;
+}
+.checkbox input[type="checkbox"]:checked + .wrapper .knob {
+    left: 20px;
+}
+.checkbox .wrapper {
+    background-color: #666;
+    border: 1px solid #666;
+    border-radius: 10px;
+    width: 42px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+}
+.checkbox .knob {
+    background-color: white;
+    border: 1px solid #666;
+    border-radius: 100%;
+    display: inline-block;
+    margin-left: 2px;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    left: 0;
+    transition: left 100ms ease-in-out 0s;
+}
+
+.checkbox{
+    float: left !important;
+}
+.checkbox-description{
+    margin-top: 5px;
+    margin-left: 5px;
+    float: right !important;
+}

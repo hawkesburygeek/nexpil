@@ -1,0 +1,1572 @@
+.task_ul_dropdown {
+    position: absolute;
+    /* transform: translate3d(0px, 0px, 0px); */
+    will-change: transform;
+    /* padding: 0px 0px 0px 50px; */
+}
+
+.task_input {
+    padding: 10px 25px;
+    border: none;
+    font-size: 1.3rem;
+}
+
+.purplecol {
+    color: #4939E3;
+}
+
+.primary-button {
+    background: linear-gradient(to right, #877CEC, #4939E3);
+    padding: 10px 0px;
+    box-shadow: 0px 3px 6px #0000001A;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 50px;
+    width: 100%;
+    border: none;
+    color: white;
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+.patient-disabled-button {
+    background: linear-gradient(to right, #c1c1c2, #5b5b5c) !important;
+}
+
+.patient-disabled-button:hover {
+    background: linear-gradient(to right, #c1c1c2, #5b5b5c) !important;
+}
+
+.patient-disabled-button:active {
+    background: linear-gradient(to right, #c1c1c2, #5b5b5c) !important;
+}
+
+.primary-button:hover {
+    background: linear-gradient(to right, #a399f8, #7163ec);
+}
+
+.primary-button:active {
+    background: linear-gradient(to right, #5240f8, #2e19eb);
+}
+
+.task_ul_dropdown li {
+    margin-top: 1px;
+    background-color: #f7f7fa;
+    border-color: white;
+    font-size: 18px;
+    line-height: 35px;
+    font-weight: 400;
+    cursor: pointer;
+    margin: 0px !important;
+}
+
+.task_ul_dropdown li:hover {
+    background-color: #877CEC;
+}
+
+.span_or {
+    margin: 10%;
+    font-size: 19pt;
+}
+
+.round_arrow {
+    transform: scale(2, 2);
+    color: black;
+    float: right;
+    right: 10px;
+    position: absolute;
+}
+
+.round_arrow-add-task {
+    transform: scale(2, 2);
+    float: right;
+    right: 10px;
+    position: absolute;
+}
+
+.col2-roundblocktask {
+    vertical-align: middle;
+    background: #f7f7fa;
+    width: 100%;
+    border-radius: 30px;
+    box-shadow: -1px 1px 5px #ddd;
+    position: relative;
+    display: inline-flex;
+    cursor: pointer;
+    padding: 2% 5%;
+    margin: 10px 0;
+}
+
+.col2-roundblocktask:hover {
+    color: #4939E3;
+}
+
+.patient-page-existing-task-style {
+    background: white;
+    /* width: 100%; */
+    border-radius: 20px;
+    box-shadow: -1px 1px 5px #ddd;
+    padding: 15px 25px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    /* position: relative; */
+    /* display: inline-flex; */
+    cursor: pointer;
+    float: left;
+    font-size: 15px;
+}
+
+.patient-page-existing-task-title-style-complete {
+    background: #4939E3;
+    /* width: 100%; */
+    border-radius: 20px;
+    box-shadow: -1px 1px 5px #ddd;
+    padding: 15px 25px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    /* position: relative; */
+    /* display: inline-flex; */
+    cursor: pointer;
+    float: left;
+    font-size: 15px;
+}
+.patient-page-existing-task-style-from-note{
+    background: white;
+    /* width: 100%; */
+    border-radius: 10px;
+    box-shadow: -1px 1px 5px #ddd;
+    padding: 10px 20px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    /* position: relative; */
+    /* display: inline-flex; */
+    cursor: pointer;
+    float: left;
+    font-size: 20px;
+}
+.patient-page-existing-task-style-from-note:hover {
+    background: #F7F7FA;
+}
+.patient-page-existing-task-style:hover {
+    background: #e2dffa;
+}
+
+.patient-page-existing-task-title-style {
+    color:#333333;
+    float: left;
+}
+
+.patient-page-existing-task-completed-style {
+    color: #333333;
+    float: left;
+    font-size: 16px;
+    margin: auto;
+    margin-left: 10px;
+    top: 50%;
+    /* transform: translateY(25%); */
+}
+
+.patient-page-existing-task-container-style {
+    margin-top: 20px;
+}
+
+.task_btn-group {
+    width: 35%;
+    position: relative;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.data-container {
+    flex: 1 1;
+    display: flex;
+    padding-left: 25%;
+    flex-direction: column;
+    padding-bottom: 0px;
+    width: 100%;
+    height: calc(100%);
+    margin-top: 50px;
+}
+
+.card-container {
+    width: 60%;
+    background-color: white;
+    box-shadow: 0px 3px 6px #0000001A;
+    border-radius: 40px;
+    padding: 35px;
+    position: fixed;
+}
+
+.scroll-card-section {
+    margin-top: 225px;
+}
+
+.card-avatar-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #4939E3;
+}
+
+.card-user-avatar-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+
+.user-name-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    padding-left: 30px;
+}
+
+.user-name {
+    font-family: mediumText;
+    font-size: 35px;
+    color: #333333;
+    margin: 0px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 330px;
+    text-align: left;
+}
+
+.user-type {
+    font-family: regularText;
+    font-size: 21px;
+    color: #333333;
+    margin: 0px;
+}
+
+.show-chat-icon-container {
+    width: 60px;
+    height: 60px;
+    box-shadow: 0px 5px 10px #0000001A;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: linear-gradient(to right, rgb(135, 124, 236), rgb(73, 57, 227));
+}
+
+.card-user-info-section {
+    padding-left: 44px;
+    padding-right: 44px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.card-user-info-section-for-mobile {
+    padding-left: 44px;
+    padding-right: 44px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    display: flex;
+}
+
+.info-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info-title {
+    font-size: 12px;
+    font-family: regularText;
+    text-align: left;
+    margin: 0px;
+    color: #707070;
+}
+
+.user-info-description {
+    font-size: 15px;
+    font-family: mediumText;
+    text-align: left;
+    margin: 0px;
+    color: #333333;
+}
+
+.card-section {
+    width: 97%;
+    background-color: white;
+    box-shadow: 0px 3px 6px #0000001A;
+    border-radius: 40px;
+    margin-top: 20px;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pagination-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.pagination-title {
+    font-size: 35px;
+    font-family: mediumText;
+    color: #333333;
+    font-weight: 300;
+    margin: 0px;
+}
+
+.pagination-list {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 0px;
+}
+
+.pagination-item {
+    list-style: none;
+    font-size: 20px;
+    font-family: regularText;
+    color: #333333;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+.pagination-item-selected {
+    list-style: none;
+    font-size: 20px;
+    font-family: regularText;
+    color: #333333;
+    cursor: pointer;
+    color: #4939E3;
+}
+
+.pagination-item-selected p {
+    margin-bottom: 10px;
+}
+
+.bottom-border {
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #877CEC, #4939E3);
+    border-radius: 100px;
+}
+
+.medical-no-report {
+    width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F7F7FA;
+    border-radius: 40px;
+    margin-top: 15px;
+}
+
+.medical-no-report-text {
+    font-size: 25px;
+    font-family: boldTitles;
+    color: #969696;
+}
+
+.card-title {
+    font-size: 35px;
+    margin: 0px;
+    color: #333333;
+    font-family: mediumText;
+    text-align: left;
+    font-weight: 300;
+    width: 100%;
+}
+
+
+.description-card {
+    padding: 30px 50px;
+    background-color: #F7F7FA;
+    width: 100%;
+    border-radius: 37px;
+    margin-top: 30px;
+}
+
+.title-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #4939E3;
+}
+
+.thin-line {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #4939E3;
+}
+
+.title-text {
+    font-size: 23px;
+    font-family: mediumText;
+    color: #4939E3;
+    margin: 0px;
+}
+
+.title-date-text {
+    font-size: 18px;
+    font-family: mediumText;
+    color: #333333;
+    margin: 0px;
+}
+
+.description-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    position: relative;
+}
+
+.description-row-description {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    font-size: 18px;
+    color: #4939E3;
+}
+
+.description-row-title {
+    font-size: 17px;
+    font-family: mediumText;
+    color: #333333;
+    margin: 0px;
+    text-align: center;
+}
+
+.description-row-info {
+    font-size: 15px;
+    font-family: mediumText;
+    color: #333333;
+    margin: 0px;
+    text-align: center;
+}
+
+.description-row-info span {
+    font-size: 18px;
+    font-family: mediumText;
+    color: #333333;
+    margin: 0px;
+}
+
+.record-data-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.description-card-rigth-side {
+    padding: 30px 50px;
+    background-color: #F7F7FA;
+    width: 100%;
+    border-radius: 37px;
+    margin-top: 30px;
+}
+
+.assigned-tasks-container {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.assigned-task-card {
+    background-color: #F7F7FA;
+    padding: 20px 40px;
+    box-shadow: 0px 3px 6px #0000001A;
+    border-radius: 30px;
+    display: flex;
+    width: 47%;
+    margin: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.assigned-task-text {
+    font-size: 20px;
+    font-family: mediumText;
+    margin: 0px;
+    white-space: nowrap;
+    transition-duration: 0s;
+}
+
+.subscribe-text {
+    font-size: 15px;
+    font-family: mediumText;
+    color: #333333;
+    margin: 0px;
+    white-space: nowrap;
+    padding-left: 30px;
+}
+
+.add-input-description {
+    font-size: 20px;
+}
+
+.add-button {
+    font-size: 18px;
+    padding: 10px 60px;
+    /* box-shadow: 0px 3px 6px #0000001A; */
+    border-radius: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 2px dashed #4939E3; */
+    margin-right: auto;
+    /* margin-left: 20px; */
+    cursor: pointer;
+    background: linear-gradient(to right, #877CEC, #4939E3);
+    color: white;
+    border: none;
+}
+
+.add-button:focus {
+    outline: none;
+}
+
+.chat-paitient-questionnaire-choice-active {
+    background: #877CEC 0% 0% no-repeat padding-box;
+    border-radius: 100px;
+    border: none;
+    outline: none!important;
+    color: white;
+    font-size: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.chat-paitient-questionnaire-choice {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 100px;
+    border: none;
+    outline: none!important;
+    font-size: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.multiple {
+    margin-right: 5%;
+}
+
+.chat-paitient-questionnaire-choice-active:focus {
+    outline: none;
+}
+
+/* .add-button:hover {
+    background: #dfdcff;
+}
+
+.add-button:active {
+    background: #b4aefc;
+} */
+
+.note-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.doctor-note-card {
+    background-color: #F7F7FA;
+    padding: 20px 40px;
+    box-shadow: 0px 3px 6px #0000001A;
+    border-radius: 30px;
+    display: flex;
+    margin: 10px;
+    /* width: 45%; */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.doctor-note-card:hover {
+    background-color: #e9e9ff;
+}
+
+.discard-button {
+    background: linear-gradient(to right, #EC877C, #E34939);
+    padding: 10px 0px;
+    box-shadow: 0px 3px 6px #0000001A;
+    border-radius: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.discard-button:hover {
+    background: linear-gradient(to right, #f3a59d, #f37d70);
+}
+
+.discard-button:active {
+    background: linear-gradient(to right, #f55f4e, #c21d0b);
+}
+
+.doctor-notes-button-text {
+    color: white;
+    font-family: mediumText;
+    font-size: 20px;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.add-section {
+    width: 100%;
+    margin-top: 40px;
+    border-top: 2px solid #4939E3;
+    padding-top: 50px;
+}
+
+.add-section-title-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.add-section-title-title-text {
+    font-size: 30px;
+    color: #333333;
+    font-family: mediumText;
+    margin: 0px;
+    font-weight: 300;
+}
+
+.add-section-cancel-text {
+    font-size: 20px;
+    font-family: regularText;
+    color: #E34939;
+    margin: 0px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.assigned-new-task-text {
+    font-size: 20px;
+    font-family: mediumText;
+    color: #E34939;
+    margin: 0px;
+    text-decoration: underline;
+    white-space: nowrap;
+    transition-duration: 0s;
+    cursor: pointer;
+}
+
+.assigned-task-new-text {
+    font-size: 18px;
+    color: black;
+    font-family: regularText;
+    margin: 0px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.add-section-description {
+    font-size: 20px;
+    font-family: regularText;
+    color: #333333;
+    margin: 0px;
+    margin-top: 30px;
+    line-height: 40px;
+}
+
+.add-section-switch-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-section-switch {
+    width: 70%;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #F7F7FA;
+    margin-top: 30px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.switch-option {
+    width: 50%;
+    height: 100%;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333333;
+}
+
+.switch-option-selected {
+    width: 50%;
+    height: 98%;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 2px 4px #0000001A;
+    background: linear-gradient(to right, #877CEC, #4939E3);
+    color: white;
+}
+
+.toggle-info-data-section {
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.option-text {
+    font-size: 20px;
+    font-family: mediumText;
+    margin: 0px;
+    transition-duration: 0s;
+}
+
+.add-input-section {
+    width: 100%;
+    padding: 25px;
+    border-radius: 40px;
+    background-color: #F7F7FA;
+    margin-top: 30px;
+}
+
+.input-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-buttons {
+    width: 35%;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 8px #0000001A;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.add-buttons-text {
+    font-size: 18px;
+    font-family: mediumText;
+    color: #AFAFAF;
+    margin: 0px;
+}
+
+.add-inputs {
+    outline: none;
+    width: 100%;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 8px #0000001A;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 20px;
+    cursor: pointer;
+    color: black;
+    font-size: 18px;
+    font-family: mediumText;
+    border: none;
+}
+
+.save-task-button {
+    width: 25%;
+    padding: 15px;
+    box-shadow: 0px 4px 8px #0000001A;
+    border-radius: 100px;
+    background: linear-gradient(to right, #877CEC, #4939E3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #F7F7FA;
+}
+
+.save-task-button p {
+    font-size: 18px;
+    font-family: mediumText;
+    margin: 0px;
+}
+
+.doctors-notes-details-section {
+    width: 100%;
+    background-color: #F7F7FA;
+    box-shadow: 0px 3px 6px #0000001A;
+    border-radius: 30px;
+    padding: 30px 50px;
+    margin-top: 20px;
+}
+
+.doctors-notes-details-section-header-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 25px;
+}
+
+.header-row-title {
+    font-size: 20px;
+    font-family: mediumText;
+    margin: 0px;
+    color: #333333;
+}
+
+.header-row-title span {
+    color: #4939E3;
+}
+
+.header-row-date {
+    font-size: 16px;
+    font-family: mediumText;
+    color: #333333;
+    margin: 0px;
+}
+
+.details-part-section {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.parts-titles {
+    width: 100%;
+    font-size: 20px;
+    color: #4939E3;
+    font-family: mediumText;
+    text-align: left;
+    margin: 0px;
+}
+
+.parts-decription-text {
+    font-size: 20px;
+    font-family: mediumText;
+    color: #333333;
+    margin: 0px;
+    text-align: left;
+    padding-left: 5%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.part-input-text-container {
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.chat-paitient-questionaire-index {
+    width: 10%;
+    font-size: 20px;
+    margin: auto;
+}
+
+.part-input-text-style {
+    border: transparent;
+    background: transparent;
+    width: 90%;
+    background-color: transparent !important;
+}
+
+.part-input-text-style:focus {
+    
+    border: transparent;
+    outline: transparent;
+}
+.part-input-text-style:hover{
+    cursor: pointer;
+}
+
+.parts-decription-text span {
+    color: #4939E3;
+}
+
+.details-part-description {
+    width: 100%;
+    height: 200px;
+    border: none;
+    box-shadow: 0px 2px 4px #0000001A;
+    padding-left: 10px;
+}
+
+.details-part-description::placeholder {
+    color: #4939E3;
+}
+
+.details-part-description:focus {
+    outline: none;
+}
+
+.doctors-note-details-part-description-card {
+    padding: 30px 50px;
+    background-color: white;
+    width: 50%;
+    border-radius: 37px;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.doctors-note-details-part-task-detail-card {
+    padding: 30px 20px;
+    background-color: white;
+    width: 100%;
+    border-radius: 37px;
+    margin-top: 30px;
+    /* margin-left: 30px; */
+}
+.doctors-note-details-part-task-detail-card-will-remove{
+    /* padding: 30px 20px; */
+    /* background-color: white; */
+    width: 100%;
+    /* border-radius: 37px; */
+    /* margin-top: 20px; */
+}
+.parts-decription-assessment-comment {
+    font-size: 20px;
+    font-family: mediumText;
+    color: #AFAFAF;
+    margin: 0px;
+    text-align: left;
+    padding-left: 5%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.details-part-assessment-tasks-list {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.details-part-assessment-tasks-list .assigned-task-card {
+    background-color: white;
+    padding: 20px 40px;
+    box-shadow: 0px 3px 6px #0000001A;
+    border-radius: 25px;
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.doctors-note-details-part-buttons-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.doctors-note-details-part-buttons-container .discard-button,
+.primary-button {
+    /* margin-left: 5px;     */
+}
+
+@media only screen and (max-width: 1500px) {
+    .user-info-title {
+        font-size: 11px;
+    }
+
+    .card-container {
+        width: 66%;
+    }
+
+    .card-user-avatar-image {
+        width: 70px;
+        height: 70px;
+    }
+
+    .user-name {
+        font-size: 30px;
+    }
+
+    .user-type {
+        font-size: 17px;
+    }
+
+    .show-chat-icon-container {
+        width: 50px;
+        height: 50px;
+    }
+
+    .pagination-title {
+        font-size: 30px;
+    }
+
+    .pagination-item {
+        font-size: 17px;
+    }
+
+    .pagination-item-selected p {
+        font-size: 17px;
+    }
+
+    .card-title {
+        font-size: 30px;
+    }
+
+    .title-text {
+        font-size: 20px;
+    }
+
+    .title-date-text {
+        font-size: 15px;
+    }
+
+    .description-row-title {
+        font-size: 16px;
+    }
+
+    .description-row-info span {
+        font-size: 16px;
+    }
+
+    .description-row-info {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width: 1430px) {
+    .assigned-task-text {
+        font-size: 18px;
+    }
+
+    .subscribe-text {
+        font-size: 13px;
+    }
+
+    .header-row-title {
+        font-size: 18px;
+    }
+
+    .parts-titles {
+        font-size: 18px;
+    }
+
+    .parts-decription-text {
+        font-size: 18px;
+    }
+
+    .parts-decription-assessment-comment {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 1330px) {
+    .pagination-list {
+        width: 57%;
+    }
+}
+
+@media only screen and (max-width: 1335px) {
+    .card-container {
+        width: 71%;
+    }
+}
+
+@media only screen and (max-width: 1245px) {
+    .user-info-title {
+        font-size: 10px;
+    }
+
+    .user-info-description {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .card-container {
+        width: 70.5%;
+    }
+
+    .add-section-title-title-text {
+        font-size: 25px;
+    }
+
+    .add-section-description {
+        font-size: 16px;
+    }
+
+    .option-text {
+        font-size: 16px;
+    }
+
+    .add-buttons-text {
+        font-size: 15px;
+    }
+
+    .save-task-button p {
+        font-size: 15px;
+    }
+
+    .pagination-title {
+        font-size: 25px;
+    }
+
+    .card-title {
+        font-size: 25px;
+    }
+
+    .title-text {
+        font-size: 17px;
+    }
+
+    .title-date-text {
+        font-size: 12px;
+    }
+
+    .description-row-title {
+        font-size: 13px;
+    }
+
+    .description-row-info span {
+        font-size: 13px;
+    }
+
+    .description-row-info {
+        font-size: 10px;
+    }
+
+    .pagination-item-selected p {
+        font-size: 15px;
+    }
+
+    .pagination-item {
+        font-size: 15px;
+    }
+
+    .medical-no-report-text {
+        font-size: 21px;
+    }
+
+    .assigned-task-text {
+        font-size: 16px;
+    }
+
+    .subscribe-text {
+        font-size: 11px;
+        padding-left: 20px;
+    }
+
+    .doctor-notes-button-text {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .card-user-info-section {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .card-user-info-section-for-mobile {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .header-row-title {
+        font-size: 16px;
+    }
+
+    .parts-titles {
+        font-size: 16px;
+    }
+
+    .parts-decription-text {
+        font-size: 16px;
+    }
+
+    .parts-decription-assessment-comment {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 1082px) {
+    .card-user-info-section {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .card-user-info-section-for-mobile {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    /* .card-user-info-section-for-mobile {
+        display: flex;
+    } */
+
+    .user-info-title {
+        text-align: right;
+    }
+
+    .assigned-tasks-container {
+        flex-direction: column !important;
+        margin-top: 0px;
+        align-items: center;
+    }
+
+    .assigned-task-card {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .add-button {
+        margin: 0px;
+        margin-top: 20px;
+    }
+
+    .pagination-section {
+        flex-direction: column;
+    }
+
+    .description-card {
+        width: 100%;
+    }
+
+    .record-data-container {
+        width: 100%;
+    }
+
+    /* 
+    .lab-result-description-section {
+        flex-direction: column;
+    } */
+
+    .pagination-list {
+        padding: 0px;
+        width: 100%;
+        justify-content: space-evenly;
+    }
+
+    .data-container {
+        padding-left: 0%;
+    }
+
+    .card-container {
+        width: 63.5%;
+    }
+
+    .avatars {
+        width: 35%;
+    }
+
+    .info-section {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .user-name {
+        font-size: 25px;
+    }
+
+    .user-type {
+        font-size: 13px;
+    }
+
+    .card-user-avatar-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .show-chat-icon-container {
+        width: 40px;
+        height: 40px;
+    }
+
+    .chat-button {
+        width: 15px;
+        height: 15px;
+    }
+
+    .card-avatar-section {
+        padding-bottom: 15px;
+    }
+
+    .card-container {
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+
+    .scroll-card-section {
+        margin-top: 240px;
+    }
+}
+
+@media only screen and (max-width: 985px) {
+    .note-row {
+        flex-direction: column;
+    }
+
+    .doctor-note-card {
+        width: 100%;
+    }
+
+    .discard-button {
+        margin-top: 15px;
+        /* width: 45%; */
+    }
+
+    .primary-button {
+        margin-top: 15px;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 890px) {
+    .data-container {
+        padding: 0px;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        margin-top: 0px;
+    }
+
+    .card-user-info-section {
+        display: none;
+    }
+
+    .card-container {
+        width: 100%;
+        border-radius: 0px 0px 40px 40px;
+    }
+
+    .scroll-card-section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 140px !important;
+    }
+
+    .toggle-info-data-section {
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 890px) {
+    .user-name {
+        font-size: 18px;
+    }
+
+    .user-type {
+        font-size: 11px;
+    }
+
+    .doctors-note-details-part-description-card {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 890px) {
+    .doctors-note-details-part-description-card {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .details-part-assessment-tasks-list .assigned-task-card {
+        width: 100%;
+    }
+
+    .parts-decription-text {
+        padding-left: 0px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .card-section {
+        /* padding-left: 10px;
+        padding-right: 10px; */
+    }
+
+    .card-title {
+        width: 100%;
+        text-align: center;
+    }
+
+    .pagination-title {
+        width: 100%;
+        text-align: center;
+    }
+
+    .assigned-task-card {
+        padding: 20px 20px;
+    }
+
+    .user-name-container {
+        padding-left: 12px;
+    }
+
+    .user-name {
+        font-size: 15px;
+    }
+}
+
+._loading_overlay_overlay {
+    background: #797878a0 !important;
+}
+
+
+.task-group-name-input {
+    max-width: 500px;
+}
+
+.add_task_detail_container {
+    margin-top: 35px;
+}
+
+
+.shildra_task_ul_dropdown {
+    position: absolute;
+    /* transform: translate3d(0px, 0px, 0px); */
+    will-change: transform;
+    /* padding: 0px 0px 0px 50px; */
+}
+
+.shildra_task_ul_dropdown li {
+    margin-top: 1px;
+    background-color: #f7f7fa;
+    border-color: white;
+    font-size: 18px;
+    line-height: 35px;
+    font-weight: 400;
+    cursor: pointer;
+    margin: 0px !important;
+}
+
+.shildra_task_ul_dropdown li:hover {
+    background-color: #877CEC;
+}
+
+.doctors-note-details-available-lab-result-container {
+    padding: 30px 50px;
+    background-color: white;
+    /* width: 50%; */
+    border-radius: 37px;
+    margin-top: 15px;
+    /* margin-left: 30px; */
+    width: 100%;
+}
+
+.doctors-note-details-available-assigned-task-container {
+    padding: 30px 50px;
+    background-color: white;
+    /* width: 50%; */
+    border-radius: 37px;
+    margin-top: 15px;
+    /* margin-left: 30px; */
+}
+
+
+.patient-page-add-task-button-style {
+    margin-top: 0px !important;
+    font-size: 18px;
+    padding: 15px 40px;
+    box-shadow: 0px 3px 6px #0000001A;
+    border-radius: 20px;
+    border: 2px dashed #4939E3;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    color: #4939E3;
+
+    float: left;
+
+    /* top: 50%; */
+}
+
+.patient-page-add-task-button-style:hover {
+    background: #dfdcff;
+}
+
+.patient-page-add-task-button-style:active {
+    background: #b4aefc;
+}
+
+.patient-page-delete-group-button {
+    margin-left: 20px;
+    color: red;
+}
+
+.patient-page-delete-group-button:hover {
+    color: rgb(245, 142, 142);
+}
+
+.patient-page-delete-group-button:active {
+    color: rgb(100, 2, 2);
+}
+.chat-patient-item-space{
+    margin-top: 10px;
+}

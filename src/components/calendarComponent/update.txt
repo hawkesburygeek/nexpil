@@ -1,0 +1,571 @@
+import React from 'react'
+import FullCalendar, { formatDate } from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import timeGridPlugin from '@fullcalendar/timegrid'
+import interactionPlugin from '@fullcalendar/interaction'
+import './style.css'
+import { sharedColors } from '../../theme/sharedColor';
+import Calendar1 from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs";
+import { BsSearch, BsFillPlusCircleFill, } from "react-icons/bs";
+import { Modal, Button } from 'react-bootstrap';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
+import { server } from "../../config/server";
+
+
+// I insert.
+import resourceTimeGridPlugin from "@fullcalendar/resource-timegrid";
+
+let token = localStorage.getItem("token");
+let config = {
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + token
+  }
+}
+
+export class Calendar extends React.Component {
+  calendarComponentRef = React.createRef();
+  timeSloteId_ref = React.createRef();
+  appointDescription_ref = React.createRef();
+  patient_id_ref = React.createRef();
+  title_ref = React.createRef();
+  constructor(props) {
+    super(props);
+    this.state = {
+      virtualTime: false,
+      modalState: 0,
+      patientlist: [],
+      description: "",
+      appDate: null,
+      patient_id: null,
+      appointment_id: null,
+      timeValue: null,
+      time: null,
+      appName: "",
+      setModalShow: true,
+      modalShow: false,
+      modalHide: true,
+      timeslot: [],
+      heightSpec: "Fixed",
+      height: 800,
+      arrowDirection: true,
+      viewType: "Week",
+      durationBarVisible: false,
+      timeRangeSelectedHandling: "Enabled",
+      startDate: null,
+      date: '',
+      date1: '',
+      date2: '',
+      date3: '',
+      date4: '',
+      date5: '',
+      hasError: ''
+    };
+    this.fetchData = this.fetchData.bind(this);
+    this.fetchPatient = this.fetchPatient.bind(this);
+    this.handlePChange = this.handlePChange.bind(this);
+    this.fetchSelectData = this.fetchSelectData.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
+
+    this.handleDesChange = this.handleDesChange.bind(this);
+    this.fetchTimeSlot = this.fetchTimeSlot.bind(this);
+    this.newSchedule = this.newSchedule.bind(this);
+    this.newAppointment = this.newAppointment.bind(this);
+    this.updateAppointment = this.updateAppointment.bind(this);
+    this.deleteAppointment = this.deleteAppointment.bind(this);
+    this.handleModalHide = this.handleModalHide.bind(this);
+    this.handleTimeChange = this.handleTimeChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.hideModal = this.hideModal.bind(this);
+  }
+
+  state = {
+    currentEvents: [],
+    calendarEvents: []
+  }
+
+  hideModal() {
+    this.setState({ modalShow: false })
+  }
+
+  async fetchPatient() {
+    let a = [];
+    // eslint-disable-next-line
+    var temp = await axios.get(server.serverURL + "v1/patients", {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }
+    }).then(function (response) {
+      a = response.data.data.results
+    });
+    this.setState({ patientlist: a });
+  }
+
+  async fetchData() {
+    let a = [];
+    // eslint-disable-next-line
+    var bb = await axios.get(server.serverURL + "v1/appointments", {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }
+    }).then(function (response) {
+      a = response.data.data.results
+
+    }).catch(error => {
+      // alert(JSON.stringify(error.response.data.errors));
+      console.log(error.response, "error")
+    })
+    a.forEach(obj => this.renameKey(obj, 'appointment_id', 'id'));
+    a.forEach(obj => this.renameKey(obj, 'time_slot', 'start'));
+    a.forEach(obj => this.renameKey(obj, 'patient_name', 'title'));
+    a.forEach(obj => this.renameValue(obj, 'start', obj['appointment_date'], obj['start']));
+    this.setState({ calendarEvents: a });
+  }
+
+  renameKey(obj, oldKey, newKey) {
+    obj[newKey] = obj[oldKey];
+    delete obj[oldKey];
+  }
+  renameValue(obj, field, oldValue, newValue) {
+    obj[field] = oldValue + 'T' + newValue;
+  }
+
+
+  async fetchTimeSlot() {
+    let a = [];
+    let appointmentDetail = {
+      appointment_date: this.state.appDate.toISOString().substring(0, 10),
+    }
+    console.log(appointmentDetail)
+    // eslint-disable-next-line
+    var temptime = await axios.post(server.serverURL + "v1/available-time-slots", appointmentDetail, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }
+    }).then(function (response) {
+      a = response.data.data.results
+    });
+    this.setState({ timeslot: a });
+  }
+
+
+  async fetchSelectData() {
+
+    let b = [];
+    const event_id = this.state.appointment_id;
+    // eslint-disable-next-line
+    var temp = await axios.get(server.serverURL + "v1/appointments/" + event_id, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }
+    }).then(function (response) {
+      b = response.data.data
+    });
+    this.setState({ time: b.time_slot })
+    this.setState({ timeValue: b.time_slot_id });
+    this.setState({ patient_id: b.patient_id });
+    this.setState({ description: b.description });
+    this.setState({ appName: b.title }, function () { });
+    let a = await this.fetchTimeSlot()
+
+    this.setState({ timeslot: [{ time_slot: b.time_slot, time_slot_id: b.time_slot_id }, ...this.state.timeslot] }, function () {
+      console.log(this.state.timeslot, "time slot", a)
+      this.setState({ modalShow: true });
+      // {time_slot: b.time_slot, time_slot_id: b.time_slot_id}, 
+    });
+
+  }
+
+  componentWillMount() {
+    var e = new Date();
+    this.setState({
+      appDate: e
+    });
+    const first = new Date();
+    const secondDate = new Date();
+    const thirdDate = new Date();
+    const firthDate = new Date();
+    const fifthDate = new Date();
+    const sixthDate = new Date();
+    const second = new Date(secondDate.setMonth(secondDate.getMonth() + 1));
+    const third = new Date(thirdDate.setMonth(thirdDate.getMonth() + 2));
+    const firth = new Date(firthDate.setMonth(firthDate.getMonth() + 3));
+    const fifth = new Date(fifthDate.setMonth(fifthDate.getMonth() + 4));
+    const sixth = new Date(sixthDate.setMonth(sixthDate.getMonth() + 5));
+
+    this.setState({ date: first });
+    this.setState({ date1: second });
+    this.setState({ date2: third });
+    this.setState({ date3: firth });
+    this.setState({ date4: fifth });
+    this.setState({ date5: sixth });
+
+    this.fetchData();
+    this.fetchPatient();
+  }
+
+
+  handleTimeChange(e) {
+    this.setState({ timeValue: e.target.value })
+  }
+  handleDesChange(e) {
+    this.setState({ description: e.target.value })
+  }
+  handleNameChange(e) {
+    this.setState({ appName: e.target.value })
+  }
+  handlePChange(e) {
+    this.setState({ patient_id: e.target.value })
+  }
+  handleDateChange(e) {
+    this.setState({ appDate: e })
+  }
+  handleModalHide() {
+    this.setState({ modalShow: false })
+  }
+
+  handleWeekendsToggle = () => {
+    this.setState({
+      weekendsVisible: !this.state.weekendsVisible
+    })
+  }
+
+  newSchedule(e) {
+    console.log("new-minicalandar")
+    this.setState({ appName: "" });
+    this.setState({ description: "" });
+    this.setState({ patient_id: "" });
+    this.setState({ timeValue: "" });
+    this.setState({ modalState: 1 });
+    this.setState({ modalShow: true });
+    this.fetchTimeSlot();
+  }
+
+  handleDateSelect = (selectInfo) => {
+    console.log("new-calandar")
+    this.setState({ appName: "" });
+    this.setState({ description: "" });
+    this.setState({ patient_id: "" });
+    this.setState({ timeValue: "" });
+    this.setState({ appDate: selectInfo.start });
+    this.fetchTimeSlot();
+    this.setState({ modalState: 1 });
+    this.setState({ modalShow: true });
+  }
+
+  newAppointment() {
+    console.warn('newAppointment 250');
+    var tzoffset = this.state.appDate.getTimezoneOffset() * 60000; //offset in milliseconds
+    var localISOTime = (new Date(this.state.appDate - tzoffset)).toISOString().substring(0, 10);
+    let appointmentDetail = {
+      title: this.title_ref.current.value,
+      patient_id: this.patient_id_ref.current.value,
+      appointment_date: localISOTime,
+      time_slot_id: this.timeSloteId_ref.current.value,
+      description: this.appointDescription_ref.current.value,
+      virtualTime: this.state.virtualTime
+    }
+    axios.post(server.serverURL + 'v1/appointments', appointmentDetail, config)
+      .then(res => {
+        this.setState({ modalShow: false })
+        alert(res.data.data.message)
+      })
+      .catch(error => {
+        // alert(JSON.stringify(error.response.data.errors));
+        // alert(JSON.stringify(error.response.data.errors));
+        this.setState({ hasError: error.response.data.error });
+        // console.log(error.response.status, "error")
+      })
+
+    // this.setState({ modalShow: false })
+    this.fetchData();
+
+  }
+
+  handleEventClick = (clickInfo) => {
+    console.log(clickInfo)
+    var e = new Date(clickInfo.event._def.extendedProps["appointment_date"]);
+    var utc = e.getTime() + (e.getTimezoneOffset() * 60000);
+    const eventId = clickInfo.event.id;
+    this.setState({ appDate: new Date(utc) })
+    this.setState({ appointment_id: eventId });
+    this.setState({ modalState: 0 });
+
+    this.fetchSelectData();
+
+    // this.fetchTimeSlot();
+    // this.setState({ modalShow: true });
+    // console.log(this.state.timeslot);
+  }
+
+  updateAppointment() {
+    console.warn('newAppointment 251');
+    const event_id = this.state.appointment_id;
+    var tzoffset = this.state.appDate.getTimezoneOffset() * 60000; //offset in milliseconds
+    var localISOTime = (new Date(this.state.appDate - tzoffset)).toISOString().substring(0, 10);
+    let appointmentDetail = {
+      title: this.title_ref.current.value,
+      patient_id: this.patient_id_ref.current.value,
+      appointment_date: localISOTime,
+      time_slot_id: this.timeSloteId_ref.current.value,
+      description: this.appointDescription_ref.current.value
+    }
+    console.log(appointmentDetail, "app detail")
+    axios.put(server.serverURL + 'v1/appointments/' + event_id, appointmentDetail, config)
+      .then(res => {
+        this.setState({ modalShow: false })
+        alert(res.data.data.message)
+      })
+      .catch(error => {
+        this.setState({ hasError: error.response.data.error });
+        console.log(error.response)
+      })
+    this.fetchData()
+
+  }
+
+  deleteAppointment() {
+    const event_id = this.state.appointment_id
+    console.warn('newAppointment 252');
+    axios.delete(server.serverURL + 'v1/appointments/' + event_id, config)
+      .then(res => {
+        alert(res.data.data.message)
+      })
+      .catch(error => {
+        alert(JSON.stringify(error.response.data.errors));
+        console.log(error.response, "error")
+      })
+    this.fetchData()
+    this.setState({ modalShow: false });
+  }
+
+  handleEvents = (events) => {
+    // this.setState({
+    //   currentEvents: events
+    // })
+  }
+  onChange(e) {
+    let calendarApi = this.calendarComponentRef.current.getApi();
+    calendarApi.gotoDate(e.toISOString().substring(0, 10)); // call a method on the Calendar object
+    this.setState({ appDate: e });
+  }
+
+  render() {
+    // console.log(this.state.modalState,"modal state", this.state.timeslot);
+    return (
+      <div className='demo-app'>
+        {this.renderSidebar()}
+        <div className='demo-app-main'>
+          {/* <FullCalendar
+            ref={this.calendarComponentRef}
+            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+            initialView='timeGridWeek'
+            editable={true}
+            eventDurationEditable={false}
+            timeZone='local'
+            selectable={true}
+            selectMirror={true}
+            dayMaxEvents={true}
+            weekends={this.state.weekendsVisible}
+            select={this.handleDateSelect}
+            eventContent={renderEventContent} // custom render function
+            eventClick={this.handleEventClick}
+            eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
+            defaultView={'week'}
+            allDaySlot={false}
+            contentHeight="100vh"
+            width={100}
+            events={this.state.calendarEvents}
+          /> */}
+          <FullCalendar          
+            schedulerLicenseKey="GPL-My-Project-Is-Open-Source"
+            ref={this.calendarComponentRef}
+            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+            initialView='dayGridMonth'
+            editable={true}
+            eventDurationEditable={false}
+            timeZone='local'
+            selectable={true}
+            selectMirror={true}
+            dayMaxEvents={true}
+            weekends={this.state.weekendsVisible}
+            select={this.handleDateSelect}
+            eventContent={renderEventContent} // custom render function
+            eventClick={this.handleEventClick}
+            eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
+            defaultView={'dayGridMonth'}
+            allDaySlot={false}
+            contentHeight="100vh"
+            width={100}
+            events={this.state.calendarEvents}
+            eventLimit={3}
+          />
+        </div>
+        <Modal
+          show={this.state.modalShow}
+          onHide={this.hideModal}
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Header closeButton onClick={() => this.handleModalHide()}>{this.state.modalState === 0 ? 'Edit Event' : 'Add Event'}</Modal.Header>
+          <Modal.Body>
+            {this.state.hasError &&
+              <div className="alert alert-danger alert-dismissible">
+                {/* eslint-disable-next-line */}
+                <a href="#" className="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Danger!</strong> {this.state.hasError}
+              </div>
+            }
+            <div className="form-group">
+              <input name="appointmentName" ref={this.title_ref} id="appointmentName" value={this.state.appName} className="form-control" placeholder="Add title" onChange={this.handleNameChange} />
+            </div>
+            <div className="custom-control form-group">
+              <input type="checkbox" className="custom-control-input" id="defaultUnchecked" name="defaultUnchecked" />
+              <label className="custom-control-label" htmlFor="defaultUnchecked">Add as Virtual Appointment Time</label>
+            </div>
+            <div className="form-group">
+              <DatePicker
+                ref={this.appointmentDate}
+                selected={this.state.appDate}
+                onChange={this.handleDateChange}
+                name="startDate"
+                dateFormat="MM/dd/yyyy"
+              />
+            </div>
+            <div className="form-group">
+              {/* <label>Time</label> */}
+              <select ref={this.timeSloteId_ref} className="form-control" id="time_select" name="start_time" defaultValue={this.state.timeValue} onChange={this.handleTimeChange}>
+                {/* {this.state.modalState === 0 ? <option value={this.state.timeValue} key={this.state.timeValue}> {this.state.time} </option> : null} */}
+                {this.state.timeslot.map((item, i) => {
+                  return <option value={item.time_slot_id} key={item.time_slot_id}>{item.time_slot}</option>;
+                })}
+              </select>
+            </div>
+            <div className="form-group">
+              {/* <label>Patient</label> */}
+              <select ref={this.patient_id_ref} className="form-control" value={this.state.patient_id} name="patient" onChange={this.handlePChange}>
+                {this.state.patientlist.map((item, i) => {
+                  return <option value={item.id} key={i}>{item.first_name + " " + item.last_name}</option>;
+                })}
+              </select>
+            </div>
+            <div className="form-group">
+              {/* <label>Description</label> */}
+              <textarea ref={this.appointDescription_ref} name="description" id="description" className="form-control" value={this.state.description} onChange={this.handleDesChange}></textarea>
+            </div>
+          </Modal.Body>
+
+          <Modal.Footer>
+            {this.state.modalState === 0 ?
+              <Button variant="primary" style={{ background: "#eb7f73", borderColor: "transparent", borderRadius: "20px" }} onClick={this.deleteAppointment}>
+                Delete
+              </Button> :
+              <Button variant="secondary" style={{ background: "#eb7f73", borderColor: "transparent", borderRadius: "20px" }} onClick={this.handleModalHide}>
+                Cancel
+              </Button>
+            }
+            {this.state.modalState === 0 ?
+              <Button variant="primary" style={{ background: "#877cec", borderColor: "transparent", borderRadius: "20px" }} onClick={this.updateAppointment}>
+                Save
+              </Button> :
+              <Button variant="primary" style={{ background: "#877cec", borderColor: "transparent", borderRadius: "20px" }} onClick={this.newAppointment}>
+                Save
+              </Button>
+            }
+          </Modal.Footer>
+
+        </Modal>
+      </div>
+    )
+  }
+
+  renderSidebar() {
+    // var { ...config } = this.state;
+    const specialColorFont = {
+      color: sharedColors.primaryFontColor,
+    }
+    const toggleAvatar = () => {
+      this.setState({ arrowDirection: !this.state.arrowDirection });
+    }
+
+    return (
+      <div className='demo-app-sidebar'>
+        <div className='demo-app-sidebar-section'>
+          <div className="show-calendar-picker" onClick={() => toggleAvatar()}>
+            {this.state.arrowDirection ? <BsChevronCompactDown color="white" /> : <BsChevronCompactUp color="white" />}
+          </div>
+          <div className={this.state.arrowDirection === false ? "show-picker-calendar" : "non-show-picker-calendar"}>
+            <div className="avatars-title-container">
+              <h1 className="avatars-title-text">Schedule<span style={specialColorFont}>.</span></h1>
+              <BsFillPlusCircleFill onClick={(e) => this.newSchedule(e)} color={sharedColors.primaryButtonsColor} style={{ height: "20px" }} className="avatars-title-add-button" />
+            </div>
+            <div className="search-bar">
+              <BsSearch size="18px" color={sharedColors.primaryFontColor} className="search-icon" />
+              <input type="text" placeholder="Search" className="search-input" />
+            </div>
+          </div>
+          <div className="calendar-sidbar">
+            <Calendar1
+              onChange={this.onChange}
+              calendarType="US"
+            />
+            <Calendar1
+              onChange={this.onChange}
+              calendarType="US"
+              value={this.state.date1}
+            />
+            <Calendar1
+              onChange={this.onChange}
+              calendarType="US"
+              value={this.state.date2}
+            />
+            <Calendar1
+              onChange={this.onChange}
+              calendarType="US"
+              value={this.state.date3}
+            />
+            <Calendar1
+              onChange={this.onChange}
+              calendarType="US"
+              value={this.state.date4}
+            />
+            <Calendar1
+              onChange={this.onChange}
+              calendarType="US"
+              value={this.state.date5}
+            />
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+}
+
+function renderEventContent(eventInfo) {
+  return (
+    <>
+      <b>{eventInfo.timeText}</b>
+      <i>{eventInfo.event.title}</i>
+    </>
+  )
+}
+// eslint-disable-next-line
+function renderSidebarEvent(event) {
+  return (
+    <li key={event.id}>
+      <b>{formatDate(event.start, { year: 'numeric', month: 'short', day: 'numeric' })}</b>
+      <i>{event.title}</i>
+    </li>
+  )
+}

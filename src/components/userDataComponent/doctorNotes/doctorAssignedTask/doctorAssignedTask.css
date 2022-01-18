@@ -1,0 +1,15 @@
+.doctor-note-task-container {}
+
+.doctor-note-existing-tasks-container {
+    
+}
+
+.doctor-note-task-details-container {
+    width: 100%;
+    margin-top: 20px;
+    border-top: 2px solid #4939E3;
+    padding-top: 10px;
+}
+.doctor-note-task-selectors-container{
+
+}

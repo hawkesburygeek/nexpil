@@ -1,0 +1,61 @@
+.tele-main{
+    padding-top: 150px;
+    display: flex!important;
+}
+.large-img {
+    width: 48vh;
+}
+.fw-600 {
+    font-weight: 600;
+    padding: 0px 8px;
+}
+.fw-400 {
+    font-weight: 400;
+    padding: 0px 8px;
+}
+.tele-icon {
+    padding-bottom:0px;
+}
+.health-info {
+    margin: 150px 30px 30px 30px;
+    background-color: white;
+    border-radius: 20px;
+    width: 700px;
+}
+.css-h4y409-MuiList-root {
+    border-radius: 10px;
+}
+.css-i4bv87-MuiSvgIcon-root {
+    /* color: #610BEF; */
+}
+.complete-item {
+    padding: 5px 20px 0px 50px;
+}
+
+.css-10hburv-MuiTypography-root {
+    color: #000000!important;
+    font-weight: 600;
+    font-size: 20px;
+}
+.css-4b67si-MuiSvgIcon-root {
+    color: #34C759!important;
+}
+.checked-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000000;
+}
+.checked-info {
+    font-size: 20px;
+    font-weight: 600;
+    color: #610BEF;
+}
+.checked-header {
+    padding-top: 15px;
+}
+.avatar-group {
+    /* position: relative; */
+    /* top: -14vh; */
+    /* text-align: center; */
+    /* left: 0px; */
+}

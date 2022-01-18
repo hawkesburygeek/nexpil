@@ -1,0 +1,163 @@
+
+
+
+
+.immunizations-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F7F7FA;
+    border-radius: 40px;
+    margin-top: 15px;
+}
+
+.immunizations-data-row-container {
+    width: 90%;
+    display: inline-block;
+    padding-bottom: 20px;
+}
+
+.immunization-data-part {
+    width: 20%;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.immunization-data-title {
+    font-size: 20px;
+    font-family: boldTitles;
+    color: #333333;
+    margin: 0px;
+}
+
+.immunization-data-description {
+    font-size: 18px;
+    font-family: mediumText;
+    color: #333333;
+    margin: 0px;
+    margin-top: 10px;
+}
+
+.medication-subscription-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    flex-direction: column;
+}
+
+.medication-every-data-card {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #F7F7FA;
+    margin-bottom: 20px;
+}
+
+.medication-between-part {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.medication-subscription-title {
+    font-size: 20px;
+    font-family: mediumText;
+    color: #4939E3;
+    margin: 0px;
+}
+
+.medication-subscription-description {
+    font-size: 16px;
+    margin: 0px;
+    font-family: mediumText;
+    color: #333333;
+    margin-top: 10px;
+}
+
+.medication-subscription-author {
+    font-size: 20px;
+    font-family: mediumText;
+    color: #333333;
+    margin: 0px;
+}
+
+.medication-subscription-date {
+    font-size: 16px;
+    margin: 0px;
+    font-family: mediumText;
+    color: #333333;
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 1500px) {
+    .immunization-data-title {
+        font-size: 17px;
+    }
+
+    .immunization-data-description {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .medication-subscription-title {
+        font-size: 16px;
+    }
+    
+    .medication-subscription-author {
+        font-size: 16px;
+    }
+
+    .medication-subscription-description {
+        font-size: 14px;
+    }
+
+    .medication-subscription-date {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .immunizations-data-row-container {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .immunization-data-part {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .medication-every-data-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .medication-between-part {
+        width: 100%;
+    }
+
+    .medication-between-part:last-child {
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .option-text {
+        font-size: 14px;
+    }
+}

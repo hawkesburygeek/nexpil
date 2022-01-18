@@ -1,0 +1,15 @@
+diff a/src/api/axiosAPIs.js b/src/api/axiosAPIs.js	(rejected hunks)
+@@ -3,12 +3,11 @@
+ 
+ // ==================> APIs <===================//
+ 
+-const qs = require('querystring')
+ const URL = server.serverURL;
+ 
+ export const config = {
+     headers: {
+-        'Authorization': 'Bearer ' + localStorage.token
++      'Authorization': 'Bearer ' + localStorage.token
+     }
+ }
+ 

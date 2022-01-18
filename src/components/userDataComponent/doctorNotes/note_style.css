@@ -1,0 +1,24 @@
+.note-medication-every-data-card{
+    /* background: #F7F7FA; */
+    background-color: white;
+    /* width: 100%; */
+    border-radius: 20px;
+    box-shadow: -1px 1px 5px #ddd;
+    padding: 10px 20px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    /* position: relative; */
+    /* display: inline-flex; */
+    cursor: pointer;
+    float: left;
+    font-size: 20px;
+}
+.note-medication-every-data-card:hover{
+    background: #F7F7FA;
+}
+.note-medication-subscription-title{
+    color: black;
+}
+.note-medication-subscription-description{
+    color: blue;
+}

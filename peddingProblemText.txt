@@ -1,0 +1,11 @@
+The pendding Problems are below:
+
+
+1=>content of after visit summary update,
+2=>auto notification when user in iOS app send request,
+3=>the content in Care Gaps As Noted on Survey in gaps in care is static text,
+4=>auto-notification before 30 mins from appointment
+
+
+The api for 4 problem should be update asap.
+So i can update dashboard.

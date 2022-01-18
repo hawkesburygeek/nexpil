@@ -1,0 +1,89 @@
+.chat-info-part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chat-date-selected {
+    font-size: 12px;
+    font-family: mediumText;
+    color: white;
+    margin: 0px;
+}
+
+.chat-date {
+    font-size: 12px;
+    font-family: mediumText;
+    color: #333333;
+    margin: 0px;
+}
+
+.chat-number {
+    width: 20px;
+    height: 20px;
+    margin: 0px;
+    border-radius: 50px;
+    background-color: #4939E3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.chat-number p {
+    font-size: 10px;
+    color: white;
+    margin: 0px;
+}
+
+.chat-number-selected {
+    width: 20px;
+    height: 20px;
+    margin: 0px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.chat-number-selected p {
+    font-size: 10px;
+    color: white;
+    margin: 0px;
+}
+
+.user-avatar .user-chats-text {
+    margin: 0px;
+    text-align: left;
+    width: 100%;
+    font-size: 13px;
+    color: #333333;
+    font-family: regularText;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.user-avatar-selected .user-chats-text {
+    margin: 0px;
+    text-align: left;
+    width: 100%;
+    font-size: 13px;
+    color: white;
+    font-family: regularText;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100px;
+    text-align: left;
+}
+
+@media only screen and (max-width: 890px) {
+    .chat-user-info-avatar {
+        margin-top: 30px;
+        width: 100px;
+        height: 100px;
+    }
+}

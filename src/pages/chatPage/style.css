@@ -1,0 +1,167 @@
+/* body{
+    font-family: 'Hind Guntur', sans-serif;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    overflow: hidden;
+  } */
+  
+  .content{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    animation: bg 1.4s cubic-bezier(0, 0.2, 0.8, 1);
+  }
+  @keyframes bg {
+    0% {
+      background: #000;
+    }
+    100% {
+      background: #fff;
+    }
+  }
+  .active >.css-10hburv-MuiTypography-root {
+    color: white!important;
+  }  
+  .loading {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+  }
+  .loading div {
+    position: absolute;
+    background: #fff;
+    opacity: 1;
+    border-radius: 50%;
+    animation: loading 1.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  }
+  .loading div:nth-child(2) {
+    animation-delay: -.7s;
+  }
+  @keyframes loading {
+    0% {
+      top: 28px;
+      left: 28px;
+      width: 0;
+      height: 0;
+      opacity: 1;
+    }
+    100% {
+      top: -1px;
+      left: -1px;
+      width: 58px;
+      height: 58px;
+      opacity: 0;
+    }
+  }
+
+.chat-page-container {
+    background-color: #f7f7fa;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.main-section {
+    height: 95%;
+    padding-left: 3%;
+    display: flex;
+    flex-direction: row;
+    flex: 1 1;
+    padding-top: 9%;
+}
+
+.chat-page-section {
+    flex: 1;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    border-radius: 50px;
+    box-shadow: -1px 3px 6px #0000001A;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 50px;
+}
+
+.chat-section-part {
+    margin-left: 25%;
+    flex: 1;
+    display: flex;
+}
+
+.chatting-section {
+    padding: 25px;
+    width: 100%;
+}
+
+.chatting-user-info-section {
+    width: 40%;
+    background-color: #F7F7FA;
+    box-shadow: -1px 0px 6px #0000001A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 50px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .chat-user-info-name {
+        font-size: 30px;
+    }
+
+    .chat-user-info-row-title {
+        font-size: 16px;
+    }
+
+    .chat-user-info-row-description {
+        font-size: 16px;
+    }
+
+    .medication-row-text {
+        font-size: 16px;
+    }
+
+}
+
+@media only screen and (max-width: 1082px) {
+    .chat-page-section {
+        flex-direction: column;
+    }
+
+    .chat-section-part {
+        margin-left: 35%;
+    }
+
+    .chatting-section {
+        width: 100%;
+    }
+
+    .chatting-user-info-section {
+        width: 100%;
+        box-shadow: none;
+    }
+}
+
+@media only screen and (max-width: 890px) {
+    .chat-section-part {
+        width: 100%;
+        margin: 0px;
+        margin-bottom: 40px;
+    }
+
+    .chat-page-section {
+        height: auto;
+        border-radius: 0px;
+        box-shadow: none;
+    }
+}

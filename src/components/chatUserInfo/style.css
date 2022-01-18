@@ -1,0 +1,152 @@
+.chat-user-info-main-section {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.chat-patient-page-existing-task-style {
+    background: #F7F7FA;
+    /* width: 100%; */
+    border-radius: 30px;
+    box-shadow: -1px 1px 5px #ddd;
+    padding: 10px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    /* position: relative; */
+    /* display: inline-flex; */
+    cursor: pointer;
+    float: left;
+    font-size: 20px;
+}
+
+.chat-patient-page-existing-task-style:hover {
+    background: #e2dffa;
+}
+
+.chat-patient-page-existing-task-title-style {
+    color: #4939E3;
+    float: left;
+    margin: 5px;
+}
+
+.chat-user-info-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 120px;
+    object-fit: cover;
+}
+
+.navigator_default_dayheader {
+    font-size: 13px;
+    font-family: mediumText;
+    color: #4939E3 !important;
+}
+
+.chat-user-info-name {
+    font-size: 32px;
+    font-family: mediumText;
+    text-align: center;
+    color: #333333;
+}
+
+.chat-user-info-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.chat-user-info-row-title {
+    font-size: 21px;
+    font-family: mediumText;
+    color: #333333;
+    margin: 0px;
+}
+
+.chat-user-info-row-description {
+    font-size: 21px;
+    font-family: mediumText;
+    margin: 0px;
+    color: #4939E3;
+}
+
+.medication-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.chat-user-info-asigned-row {
+    width: 100%;
+    /* display: flex; */
+    /* flex-direction: row; */
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.medication-row-text {
+    font-size: 23px;
+    font-family: mediumText;
+    margin: 0px;
+    color: #4939E3;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.asigned-tasks-card {
+    width: 100%;
+    height: 50px;
+    box-shadow: 0px 2px 4px #0000001A;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.asigned-tasks-card-title {
+    font-size: 13px;
+    font-family: mediumText;
+    color: #333333;
+    margin: 0px;
+}
+
+.asigned-tasks-card-description {
+    font-size: 13px;
+    font-family: mediumText;
+    color: #4939E3;
+    margin: 0px;
+}
+
+.asigned-tasks-card-highlighted {
+    width: 100%;
+    height: 50px;
+    box-shadow: 0px 2px 4px #0000001A;
+    border-radius: 20px;
+    background-color: #877CEC;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.asigned-tasks-card-highlighted .asigned-tasks-card-title {
+    color: white;
+}
+
+.asigned-tasks-card-highlighted .asigned-tasks-card-description {
+    color: white;
+}
